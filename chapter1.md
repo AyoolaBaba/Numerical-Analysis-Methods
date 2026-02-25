@@ -43,3 +43,21 @@ for n in range(50):
     else:        
         x = 2 * x - 1      
     print(f"Iteration {n}: {x}")
+
+```
+
+## 1.4 Transition: From Error to Numerical Strategy
+
+The divergence observed in the Bernoulli Map simulation in Section 1.3 serves as a foundational "case study" for why standard arithmetic fails in discrete systems. 
+
+> **The Bridge: From Error to Method**
+> 
+> The divergence observed in Section 1.3, where the value of **1.8** rapidly decays into numerical noise through a simple doubling map, serves as a stark warning: mathematical logic does not always translate directly into computational accuracy. Because $1.8$ cannot be represented exactly in binary, each iteration of $2x$ or $2x - 1$ acts as an amplifier for the hidden "rounding noise" in the least significant bits. By the 50th iteration, the original signal is completely lost to this floating-point drift. This phenomenon mandates the specialized **Numerical Methods** discussed in the following chapters. We move beyond "naive" arithmetic to explore **Iterative Stability**, **Error Propagation Analysis**, and **Pivoting Strategies**—tools specifically designed to maintain the integrity of a solution even when the underlying hardware is inherently limited. Without these methods, even the most elegant mathematical models remain vulnerable to the same catastrophic loss of precision demonstrated here.
+
+
+
+---
+
+
+
+---
