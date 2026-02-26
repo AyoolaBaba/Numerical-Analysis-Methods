@@ -3,7 +3,7 @@ By **Ayoola Babalola**
 
 ## Project Structure
 
-1. [Chapter 1 – Floating-Point Arithmetic](notebooks/01_floating_point_and_rounding.ipynb)
+1. [Chapter 1 – Floating-Point Arithmetic](notebooks/01chapter1.md)
 2. [Chapter 2 – Error and Stability](notebooks/02_error_and_stability.ipynb)
 3. [Chapter 3 – Function Approximation](notebooks/03_function_approximation.ipynb)
 4. [Chapter 4 – Root Finding](notebooks/04_root_finding.ipynb)
