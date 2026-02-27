@@ -3,13 +3,13 @@ By **Ayoola Babalola**
 
 ## Project Structure
 
-1. [Chapter 1 – Floating-Point Arithmetic](notebooks/01chapter1.md)
-2. [Chapter 2 – Error and Stability](notebooks/02_error_and_stability.ipynb)
-3. [Chapter 3 – Function Approximation](notebooks/03_function_approximation.ipynb)
-4. [Chapter 4 – Root Finding](notebooks/04_root_finding.ipynb)
-5. [Chapter 5 – Numerical Integration](notebooks/05_numerical_integration.ipynb)
-6. [Chapter 6 – Differential Equations](notebooks/06_differential_equations.ipynb)
-7. [Chapter 7 – Summary and Reflections](notebooks/07_summary_and_reflections.ipynb)
+1. [Chapter 1 – Floating-Point Arithmetic](chapter1.md)
+2. [Chapter 2 – Error and Stability](chapter2.md)
+3. [Chapter 3 – Function Approximation](chapter3.md)
+4. [Chapter 4 – Root Finding](chapter4.md)
+5. [Chapter 5 – Numerical Integration](chapter5.md)
+6. [Chapter 6 – Differential Equations](chapter6.md)
+7. [Chapter 7 – Conclusion](chapter7.md)
 
 
 ## Overview
