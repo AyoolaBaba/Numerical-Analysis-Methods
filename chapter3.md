@@ -1,6 +1,6 @@
 # Chapter 3
 
-Forward differentiation approximation Method
+### Forward differentiation approximation Method
 
 ```python
 
@@ -37,7 +37,7 @@ plt.grid()
 plt.show()
 
 ```
-output:
+### output:
 
 h            Absolute Error         Reduction factor    
 ------------------------------------------------------
@@ -53,7 +53,8 @@ h            Absolute Error         Reduction factor
 
  <img width="559" height="417" alt="image" src="https://github.com/user-attachments/assets/2f52f84c-22e3-4287-a648-598509611f76" />
 
-Forward-difference approximation of the first derivative at every point in the interval except at the right-hand side. that accepts:
+### Forward-difference approximation 
+for the first derivative at every point in the interval except at the right-hand side. that accepts:
 
 a mathematical function,
 
@@ -91,7 +92,8 @@ print(approximations)
 ```
 output: [0.9999548336745894, 0.9999638335523439, 0.9999718334663424, 0.9999788334085924, 0.9999848333720924, 0.999989833350842, 0.9999938333398427, 0.9999968333350927, 0.9999988333335933, 0.9999998333333416, 0.9999998333333416, 0.9999988333335933, 0.9999968333350936, 0.9999938333398418, 0.9999898333508411, 0.9999848333720933, 0.9999788334085933, 0.9999718334663433, 0.9999638335523404, 0.999954833674591]
 
-First order approximation of the first derivative for f(x) = sin(x) on the interval [0 - 2π] with 100 sub intervals. plot f(x), f'(x) and the approximation of f'(x)
+### First order approximation of the first derivative 
+for f(x) = sin(x) on the interval [0 - 2π] with 100 sub intervals. plot f(x), f'(x) and the approximation of f'(x)
 
 ```python
 
@@ -137,7 +139,7 @@ plt.show()
 ```
 <img width="568" height="413" alt="image" src="https://github.com/user-attachments/assets/e5698cff-100c-4d67-9ed2-15e971a54181" />
 
-Building the first derivative function in a much smarter way – using NumPy arrays in Python.
+### Building the first derivative function in a much smarter way – using NumPy arrays in Python.
 
 ```python
 
@@ -169,7 +171,7 @@ plt.show()
 <img width="568" height="413" alt="image" src="https://github.com/user-attachments/assets/706df680-6937-4b66-a2ba-cffe9f8074d9" />
 
 
-Write code that finds a first order approximation for the first derivative of on the interval . Your script should output two plots (side-by-side).
+### Finds a first order approximation for the first derivative of on the interval.
 
 The left-hand plot should show the function in blue and the approximate first derivative as a red dashed curve. Sample code for this exercise is given below.
 
@@ -204,5 +206,103 @@ ax[1].grid() # Adds grid lines to the plot.
 
 <img width="554" height="413" alt="image" src="https://github.com/user-attachments/assets/da98492d-d675-4356-9d93-b9f2c79a5cf7" />
 
+### Central Differentiation
+A Python function CentralDiff(f, a, b, N) that takes a mathematical function f, the start and end values of an interval [a, b] and the number N of subintervals to use. It should return a second order numerical approximation to the first derivative on the interval.
 
+```python
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def CentralDiff(f,a,b,N):
+    x = np.linspace(a,b,N+1)
+    y = f(x)
+    return ( y[2:] - y[:-2] ) / ( 2*(x[1] - x[0]) )
+
+f = lambda x: np.sin(x)
+exact_df = lambda x: np.cos(x)
+a = 0
+b = 10
+N = 1000
+x = np.linspace(a,b,N+1)
+
+df = CentralDiff(f,a,b,N)
+
+plt.plot(x,f(x),'b',x,exact_df(x),'r--',x[1:-1], df, 'k-.')
+plt.grid()
+plt.legend(['f(x) = sin(x)',
+            'exact first deriv',
+            'approx first deriv'])
+plt.show()
+
+```
+
+<img width="568" height="413" alt="image" src="https://github.com/user-attachments/assets/4e828110-1c73-40d1-bda5-81c04e9215a8" />
+
+### Second order numerical approximation to the second derivative on the interval
+
+```python
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def SecondDiff(f,a,b,N):
+    x = np.linspace(a,b,N+1)
+    y = f(x)
+
+    return (-2*y[1:-1] + y[2:] + y[:-2] ) / ( (x[1] - x[0])**2 )
+
+f = lambda x: np.sin(x) - x*np.sin(x)
+exact_df = lambda x: x*np.sin(x) - 2*np.cos(x) - np.sin(x)
+a = 0
+b = 10
+N = 1000
+x = np.linspace(a,b,N+1)
+
+df = SecondDiff(f,a,b,N)
+
+plt.plot(x,f(x),'b',x,exact_df(x),'r--',x[1:-1], df, 'k-.')
+plt.grid()
+plt.legend(['f(x) = sin(x) - xsin(x)',
+            'exact second deriv',
+            'approx second deriv'])
+plt.show()
+
+```
+<img width="546" height="414" alt="image" src="https://github.com/user-attachments/assets/fece9553-3d2e-432f-a336-b46f78146684" />
+
+### Forward Mode AD
+
+```python
+
+import numpy as np
+# Basic operations on dual numbers represented as tuples (value, derivative)
+def dual_add(a, b):
+    """Add two dual numbers:
+    (a, a') + (b, b') = (a + b, a' + b')"""
+    return (a[0] + b[0], a[1] + b[1])
+
+def dual_multiply(a, b):
+    """Multiply two dual numbers:
+    (a, a') * (b, b') = (a*b, a'*b + a*b')"""
+    return (a[0] * b[0], a[1] * b[0] + a[0] * b[1])
+
+def dual_power(a, n):
+    """Raise dual number to integer power n:
+    (a, a')^n = (a^n, n*a^(n-1)*a')"""
+    return (a[0]**n, n * a[0]**(n-1) * a[1])
+
+def dual_sin(a):
+    """Sine of dual number:
+    sin(a, a') = (sin(a), cos(a)*a')"""
+    return (np.sin(a[0]), np.cos(a[0]) * a[1])
+
+x = (2, 1)
+u = dual_power(x, 2)
+v = dual_sin(x)
+f = dual_multiply(u, v)
+print(f)
+
+```
+output: (3.637189707302727, 1.9726023611141572)
 
