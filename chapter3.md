@@ -1,6 +1,28 @@
 # Chapter 3
 
-### Forward differentiation approximation Method
+## Numerical Differentiation and Error Propagation
+
+In many scientific and engineering problems, derivatives of functions are required in order to analyse rates of change, solve differential equations, or optimise systems. While derivatives can often be computed analytically, in many real-world situations we only have access to function values at discrete points. In these cases, numerical methods must be used to approximate derivatives.
+
+This chapter explores several approaches to numerical differentiation and examines how approximation errors arise and propagate through computational algorithms. Particular attention is given to the forward difference method and its variations, which illustrate the trade-off between computational simplicity and numerical accuracy.
+
+---
+
+Forward Differentiation Approximation Method
+---
+
+One of the simplest numerical differentiation techniques is the **forward difference approximation**. This method estimates the derivative of a function using the difference between the function value at a point and the function value at a nearby point.
+
+Mathematically, the forward difference approximation for the first derivative is given by:
+
+\[
+f'(x) \approx \frac{f(x+h)-f(x)}{h}
+\]
+
+where \(h\) is a small step size. As \(h\) becomes smaller, the approximation generally becomes more accurate. However, due to floating-point rounding errors, extremely small values of \(h\) can also introduce numerical instability.
+
+The following experiment investigates how the approximation error behaves as the step size \(h\) decreases.
+
 
 ```python
 
@@ -37,30 +59,34 @@ plt.grid()
 plt.show()
 
 ```
-### output:
+### Output:
 
-h            Absolute Error         Reduction factor    
-------------------------------------------------------
-0.5          0.1854181601184709                         
-0.25         0.12776867710089196    1.4512020029138777  
-0.125        0.07225039292956516    1.7684149790776915  
-0.0625       0.03815217748298682    1.8937423155410655  
-0.03125      0.019573887040617487   1.9491364900501262  
-0.015625     0.009910221068472835   1.9751211305353678  
-0.0078125    0.004985780110301419   1.9876971806271069  
-0.00390625   0.00250053851755135    1.9938825478216344  
-0.001953125  0.0012521789951432975  1.9969497390149018
+### Table
 
+| h | Absolute Error | Reduction Factor |
+|---|---|---|
+| 0.5 | 0.1854181601184709 | |
+| 0.25 | 0.12776867710089196 | 1.4512020029138777 |
+| 0.125 | 0.07225039292956516 | 1.7684149790776915 |
+| 0.0625 | 0.03815217748298682 | 1.8937423155410655 |
+| 0.03125 | 0.019573887040617487 | 1.9491364900501262 |
+| 0.015625 | 0.009910221068472835 | 1.9751211305353678 |
+| 0.0078125 | 0.004985780110301419 | 1.9876971806271069 |
+| 0.00390625 | 0.00250053851755135 | 1.9938825478216344 |
+| 0.001953125 | 0.0012521789951432975 | 1.9969497390149018 |
+
+### Graph
  <img width="559" height="417" alt="image" src="https://github.com/user-attachments/assets/2f52f84c-22e3-4287-a648-598509611f76" />
 
-### Forward-difference approximation 
-for the first derivative at every point in the interval except at the right-hand side. that accepts:
+This experiment shows that the error decreases roughly proportionally to the step size 
+ℎ
+h, demonstrating that the forward difference method is a first-order approximation. The log-log plot confirms the linear relationship between the error and the step size.
 
-a mathematical function,
 
-the bounds of an interval,
+Forward-Difference Approximation Across an Interval
+---
 
-the number of subintervals.
+The forward difference method can also be applied repeatedly across an entire interval to approximate derivatives at many points. The following function implements this idea by computing the derivative at each grid point except the final one.
 
 ```python
 
@@ -90,9 +116,15 @@ approximations = ForwardDiff(f, a, b, N)
 print(approximations)
 
 ```
-output: [0.9999548336745894, 0.9999638335523439, 0.9999718334663424, 0.9999788334085924, 0.9999848333720924, 0.999989833350842, 0.9999938333398427, 0.9999968333350927, 0.9999988333335933, 0.9999998333333416, 0.9999998333333416, 0.9999988333335933, 0.9999968333350936, 0.9999938333398418, 0.9999898333508411, 0.9999848333720933, 0.9999788334085933, 0.9999718334663433, 0.9999638335523404, 0.999954833674591]
+### output: 
 
-### First order approximation of the first derivative 
+[0.9999548336745894, 0.9999638335523439, 0.9999718334663424, 0.9999788334085924, 0.9999848333720924, 0.999989833350842, 0.9999938333398427, 0.9999968333350927, 0.9999988333335933, 0.9999998333333416, 0.9999998333333416, 0.9999988333335933, 0.9999968333350936, 0.9999938333398418, 0.9999898333508411, 0.9999848333720933, 0.9999788334085933, 0.9999718334663433, 0.9999638335523404, 0.999954833674591]
+
+The output values are close to cos(0)=1, which confirms that the approximation behaves correctly near the origin.
+
+First order approximation of the first derivative 
+---
+
 for f(x) = sin(x) on the interval [0 - 2π] with 100 sub intervals. plot f(x), f'(x) and the approximation of f'(x)
 
 ```python
@@ -139,7 +171,14 @@ plt.show()
 ```
 <img width="568" height="413" alt="image" src="https://github.com/user-attachments/assets/e5698cff-100c-4d67-9ed2-15e971a54181" />
 
-### Building the first derivative function in a much smarter way – using NumPy arrays in Python.
+The plot illustrates that the approximation closely follows the exact derivative, although small deviations appear due to truncation error.
+
+---
+
+Improving Efficiency with NumPy Vectorisation
+---
+
+The previous implementation uses loops, which are straightforward but not always computationally efficient. Python’s NumPy arrays allow vectorised operations that compute entire arrays of values simultaneously. This leads to simpler code and often faster execution.
 
 ```python
 
@@ -170,10 +209,14 @@ plt.show()
 ```
 <img width="568" height="413" alt="image" src="https://github.com/user-attachments/assets/706df680-6937-4b66-a2ba-cffe9f8074d9" />
 
+Vectorised implementations are often preferred in numerical computing because they reduce overhead and improve performance.
 
-### Finds a first order approximation for the first derivative of on the interval.
+Error Analysis of the Approximation
+---
 
-The left-hand plot should show the function in blue and the approximate first derivative as a red dashed curve. Sample code for this exercise is given below.
+In addition to plotting the derivative approximation, it is useful to directly measure the numerical error. The following example compares the approximation to the exact derivative and plots the absolute error on a logarithmic scale.
+
+The left-hand plot shows the function in blue and the approximate first derivative as a red dashed curve. Sample code for this exercise is given below.
 
 ```python
 
@@ -203,11 +246,22 @@ ax[1].semilogy(x[0:-1],abs(exact(x[0:-1]) - df)) # Creates a semilogarithmic plo
 ax[1].grid() # Adds grid lines to the plot.
 
 ```
+This error plot helps visualise where the approximation performs well and where numerical errors become more significant.
 
+output: 
 <img width="554" height="413" alt="image" src="https://github.com/user-attachments/assets/da98492d-d675-4356-9d93-b9f2c79a5cf7" />
 
-### Central Differentiation
-A Python function CentralDiff(f, a, b, N) that takes a mathematical function f, the start and end values of an interval [a, b] and the number N of subintervals to use. It should return a second order numerical approximation to the first derivative on the interval.
+---
+
+Central Differentiation
+---
+
+The forward difference method uses information from only one side of a point. A more accurate alternative is the central difference method, which uses information from both sides of the point:
+
+(x)≈2h
+f(x+h)−f(x−h)
+	​
+This method provides a second-order approximation, meaning the error decreases more rapidly as the step size decreases.
 
 ```python
 
@@ -236,10 +290,16 @@ plt.legend(['f(x) = sin(x)',
 plt.show()
 
 ```
-
+Output:
 <img width="568" height="413" alt="image" src="https://github.com/user-attachments/assets/4e828110-1c73-40d1-bda5-81c04e9215a8" />
 
-### Second order numerical approximation to the second derivative on the interval
+The improved agreement between the approximation and the exact derivative demonstrates the advantage of higher-order methods.
+
+Second Derivative Approximation
+---
+
+Numerical differentiation techniques can also be used to approximate higher-order derivatives. The following example computes a second-order numerical approximation to the second derivative.
+
 
 ```python
 
@@ -271,7 +331,13 @@ plt.show()
 ```
 <img width="546" height="414" alt="image" src="https://github.com/user-attachments/assets/fece9553-3d2e-432f-a336-b46f78146684" />
 
-### Forward Mode AD
+Forward Mode Automatic Differentiation
+---
+
+Finally, we consider a different approach to computing derivatives known as automatic differentiation (AD). Unlike numerical differentiation, which approximates derivatives using finite differences, automatic differentiation computes derivatives exactly using the chain rule applied to elementary operations.
+
+The following implementation demonstrates forward-mode automatic differentiation using dual numbers.
+
 
 ```python
 
@@ -305,4 +371,14 @@ print(f)
 
 ```
 output: (3.637189707302727, 1.9726023611141572)
+
+This result returns both the function value and its derivative simultaneously, illustrating the power of automatic differentiation.
+
+---
+
+### Summary
+
+This chapter explored several methods for computing derivatives numerically. Beginning with the forward difference approximation, we examined how truncation errors arise and how the choice of step size influences accuracy. More advanced techniques, such as central differences and vectorised implementations, were then introduced to improve precision and efficiency.
+
+Finally, automatic differentiation was presented as an alternative approach that computes derivatives using algebraic rules rather than numerical approximations. Together, these techniques illustrate the broader theme of numerical analysis: designing algorithms that balance accuracy, efficiency, and stability in practical computations.
 
