@@ -5,7 +5,7 @@ Author and code By: **Ayoola Babalola**
 
 1. [Chapter 1 – Floating-Point Arithmetic](chapter1.md)
 2. [Chapter 2 – Error and Stability](chapter2.md)
-3. [Chapter 3 – Function Approximation and Root finding](chapter3.md)
+3. [Chapter 3 – Numerical Differentiation and Error Propagation](chapter3.md)
 4. [Chapter 4 – TBC](chapter4.md)
 5. [Chapter 5 – TBC Numerical Integration](chapter5.md)
 6. [Chapter 6 – TBC Differential Equations](chapter6.md)
