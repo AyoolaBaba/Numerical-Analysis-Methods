@@ -65,6 +65,17 @@ def Bisection_method(f , a , b , tol=1e-7):
       print(i)
 
   return c
+
+```
+Approximate root: 3.155607581138611
+
+Because the interval is halved at each step, the error satisfies:
+
+∣𝑒𝑘+1∣≈1/2∣𝑒𝑘∣∣ek+1
+	​∣≈21
+	​∣ek∣
+
+This predictable reduction makes the bisection method numerically stable, although it converges relatively slowly compared to other methods.
 Bisection Method to approximate a root using the 'while loop'.
 
 ```python
