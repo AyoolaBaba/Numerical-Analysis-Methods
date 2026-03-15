@@ -1,4 +1,5 @@
-# Chapter 2 – Error, Convergence, and Stability in Root-Finding Algorithms
+# Chapter 2
+## Error, Convergence, and Stability in Root-Finding Algorithms
 
 A central theme in numerical analysis is understanding **how numerical algorithms behave in the presence of approximation error**.  
 When solving equations numerically we rarely obtain the exact solution. Instead, we generate **iterative approximations** that converge toward the true root.
