@@ -1,5 +1,69 @@
-# Chapter 2
+# Chapter 2 – Error, Convergence, and Stability in Root-Finding Algorithms
 
+A central theme in numerical analysis is understanding **how numerical algorithms behave in the presence of approximation error**.  
+When solving equations numerically we rarely obtain the exact solution. Instead, we generate **iterative approximations** that converge toward the true root.
+
+This chapter investigates several classical **root-finding algorithms**:
+
+- Bisection Method
+- Fixed Point Iteration
+- Newton’s Method
+- Secant Method
+
+For each algorithm, the focus is not only on computing a root, but also on examining:
+
+- **Convergence behaviour**
+- **Propagation of numerical error**
+- **Algorithmic stability**
+- **Computational efficiency**
+
+Understanding these aspects helps distinguish **well-conditioned numerical problems from unstable or poorly behaved ones**.
+
+---
+
+# Bisection Method
+
+The **Bisection Method** is one of the most stable and reliable root-finding algorithms.  
+It works by repeatedly halving an interval that contains a root.
+
+The method requires a **sign change condition**:
+
+\[
+f(a)f(b) < 0
+\]
+
+This guarantees that a root exists in the interval \([a,b]\) by the **Intermediate Value Theorem**.
+
+The algorithm reduces the interval width by a factor of **2 at each iteration**, meaning the **error decreases linearly**.
+
+Below is an implementation using a `while` loop.
+
+```python
+def Bisection_method(f , a , b , tol=1e-7):
+
+  error = abs(b - a)
+
+  if f(a) * f(b) >= 0:
+      print("this methord isn't appropiate")
+      quit()
+
+  i = 1
+
+  while error / 2 > tol:
+    c = (b + a) / 2
+
+    if f(a) * f(c) <= 0:
+      b = c
+      error = abs(b - a)
+      i = i + 1
+      print(i)
+    else:
+      a = c
+      error = abs(b - a)
+      i = i + 1
+      print(i)
+
+  return c
 Bisection Method to approximate a root using the 'while loop'.
 
 ```python
