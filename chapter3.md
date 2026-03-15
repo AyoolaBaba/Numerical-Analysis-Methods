@@ -2,6 +2,7 @@
 
 Numerical Differentiation and Error Propagation
 ---
+
 In many scientific and engineering problems, derivatives of functions are required in order to analyse rates of change, solve differential equations, or optimise systems. While derivatives can often be computed analytically, in many real-world situations we only have access to function values at discrete points. In these cases, numerical methods must be used to approximate derivatives.
 
 This chapter explores several approaches to numerical differentiation and examines how approximation errors arise and propagate through computational algorithms. Particular attention is given to the forward difference method and its variations, which illustrate the trade-off between computational simplicity and numerical accuracy.
