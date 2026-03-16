@@ -3,7 +3,7 @@ Independent computational project by **Ayoola Babalola**.
 
 ## Project Structure
 
-1. [Chapter 1 – Floating-Point Arithmetic](chapter1.md)
+1. [Chapter 1 – The Foundations of Numerical Approximation](chapter1.md)
 2. [Chapter 2 – Error and Stability](chapter2.md)
 3. [Chapter 3 – Numerical Differentiation and Error Propagation](chapter3.md)
 4. [Chapter 4 – TBC](chapter4.md)
