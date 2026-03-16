@@ -129,6 +129,7 @@ Image:
 
 <img width="574" height="455" alt="image" src="https://github.com/user-attachments/assets/e43e656a-42d9-4121-b6bf-89141724a95f" />
 
+
 A slope of $\approx 1.65$ indicates that the method converges faster than a linear method (where $p=1$) but slower than a quadratic method (where $p=2$, such as Newton's Method).
 
 This analysis provides insight into how rapidly errors shrink between iterations and allows us to empirically observe the rate of convergence.
