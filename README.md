@@ -1,5 +1,5 @@
 # Numerical-Analysis-Methods
-Author and code By: **Ayoola Babalola**
+Author and code by: **Ayoola Babalola**
 
 ## Project Structure
 
