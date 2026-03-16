@@ -121,13 +121,24 @@ plot_error_progression([0.08088022903976166, 0.014213562373095012, 0.00042058396
 ```
 
 output: 
-slope is: 1.6459984522406022
-intercept is: -0.5513844534356405
-image:
+
+" slope is: 1.6459984522406022
+intercept is: -0.5513844534356405 "
+
+Image:
 
 <img width="574" height="455" alt="image" src="https://github.com/user-attachments/assets/e43e656a-42d9-4121-b6bf-89141724a95f" />
 
-Bisection Method to approximate a root using the 'for loop'.
+A slope of $\approx 1.65$ indicates that the method converges faster than a linear method (where $p=1$) but slower than a quadratic method (where $p=2$, such as Newton's Method).
+
+This analysis provides insight into how rapidly errors shrink between iterations and allows us to empirically observe the rate of convergence.
+
+### Bisection Method with Fixed Iterations
+The number of iterations required to achieve a given tolerance can be predicted mathematically:
+
+$$N \ge \log_2 \left(\frac{b-a}{\text{tol}}\right)$$
+
+This leads to a version implemented using a `for` loop.
 
 ```python
 
