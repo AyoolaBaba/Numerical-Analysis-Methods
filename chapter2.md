@@ -174,7 +174,22 @@ print("Approximate root:", root)
 ```
 Output: Approximate root: 3.15557861328125
 
-Fixed Point Method that approximates a root when you give it max iterations.
+This version highlights how error bounds can be predicted analytically, which is a key concept in numerical analysis.
+
+### Fixed Point Iteration
+Fixed point iteration solves equations of the form:
+
+$$x = g(x)$$
+
+The algorithm repeatedly evaluates:
+
+$$x_{n+1} = g(x_n)$$
+
+Convergence depends heavily on the derivative of $g(x)$:
+
+$$|g'(x)| < 1$$
+
+If this condition is not satisfied, the iteration may diverge, demonstrating an example of **numerical instability**.
 
 ```python
 
@@ -221,7 +236,9 @@ output: 1.4500000000000002
 1.0492385451091812
 Approximate root: 1.0492385451091812
 
-Fixed Point Method that approximates a root with a stopping condition since it is possible that the iteration does not converge. It is to avoid infinite loops.
+This sequence gradually converges toward the fixed point.
+
+To prevent infinite loops in unstable cases, we add a stopping condition:
 
 ```python
 
@@ -248,7 +265,20 @@ print("Approximate root:", root)
 
 ```
 
-Newton’s method for approximating a root
+This reflects a common principle in numerical algorithms: **robust stopping criteria** are essential for stability.
+
+### Newton's Method
+
+Newton’s method is significantly faster than bisection or fixed point iteration because it uses derivative information. 
+
+The update formula is:
+
+$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+
+
+
+When close to the root, Newton’s method exhibits **quadratic convergence**, meaning the number of correct digits roughly doubles each iteration.
+
 
 ```python
 
@@ -277,6 +307,14 @@ print("Approximate root:", root)
 output:
 Approximate root: 1.414213562373095
 
+However, Newton's method can become numerically unstable if:
+
+the derivative is close to zero
+
+the initial guess is poor
+
+This motivates adding safeguards.
+
 Newton’s method for approximating a root that checks for a dervitative = 0
 
 ```python
@@ -304,10 +342,16 @@ root = Newton(f, fprime, 5, 10**-12)
 print("Approximate root:", root)
 ```
 
-iteration has not converged
+Output: 
+
+Iteration has not converged
 Approximate root: None
 
-Newton’s method with error tracking that returns a list of absolute errors between the iterates and the exact solution with max 30 iterations.
+This prevents division by zero and highlights how numerical algorithms must guard against unstable conditions.
+
+### Tracking Error in Newton's Method
+
+To study convergence behaviour, we record the absolute error between successive iterates (max 30 iterations).
 
 ```python
 
@@ -350,7 +394,25 @@ print("List of errors:", list_errors)
 output: Approximate root: 2.000000000026214
 List of errors: [0.8333333333333335, 0.16025641025641013, 0.006400016384041862, 1.0240000000383276e-05]
 
-Secant Method
+Tracking error provides insight into how quickly the algorithm converges, allowing us to compare methods quantitatively.
+
+---
+
+## Secant Method
+
+The **Secant Method** approximates Newton’s method but avoids the necessity of computing derivatives. Instead, it approximates the derivative using the slope between two previous points.
+
+### Iteration Formula
+Given two initial guesses, $x_{n}$ and $x_{n-1}$, the next approximation $x_{n+1}$ is calculated as:
+
+$$x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}$$
+
+
+
+### Comparison
+* **Performance:** Typically faster than the **Bisection Method** due to a higher order of convergence (approximately $1.618$).
+* **Stability:** Slightly less stable than **Newton's Method**, as it depends on two initial points and can diverge if the function is not well-behaved.
+
 
 ```python
 
