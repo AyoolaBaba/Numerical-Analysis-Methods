@@ -29,15 +29,16 @@ It works by repeatedly halving an interval that contains a root.
 
 The method requires a **sign change condition**:
 
-\[
-|e_{k+1}| \approx \frac{1}{2} |e_k|
-\]
+$$
+f(a)f(b) < 0
+$$
 
 This guarantees that a root exists in the interval \([a,b]\) by the **Intermediate Value Theorem**.
 
 The algorithm reduces the interval width by a factor of **2 at each iteration**, meaning the **error decreases linearly**.
 
-Below is an implementation using a `while` loop.
+
+Below is my implementation using a `while` loop.
 
 ```python
 def Bisection_method(f , a , b , tol=1e-7):
@@ -71,57 +72,21 @@ Approximate root: 3.155607581138611
 
 Because the interval is halved at each step, the error satisfies:
 
-∣𝑒𝑘+1∣≈1/2∣𝑒𝑘∣∣ek+1
-	​∣≈21
-	​∣ek∣
+$$|e_{k+1}| \approx \frac{1}{2} |e_k|$$
 
 This predictable reduction makes the bisection method numerically stable, although it converges relatively slowly compared to other methods.
-Bisection Method to approximate a root using the 'while loop'.
 
-```python
+## Analysing Error Convergence
 
-def Bisection_method(f , a , b , tol=1e-7):
+To better understand the behaviour of the algorithm, we can analyse how the error decreases between iterations. 
 
-  error = abs(b - a)
+The following code plots:
 
-  if f(a) * f(b) >= 0:
-      print("this methord isn't appropiate")
-      quit()
+$$\log_2(e_{k+1}) \quad \text{vs} \quad \log_2(e_k)$$
 
-  i = 1
+which reveals the order of convergence.
 
-  while error / 2 > tol:
-    c = (b + a) / 2
-
-    if f(a) * f(c) <= 0:
-      b = c
-      error = abs(b - a)
-      i = i + 1
-      print(i)
-    else:
-      a = c
-      error = abs(b - a)
-      i = i + 1
-      print(i)
-
-  return c
-
-import math
-
-def f(x):
-    #return x**2 - 2 = "This methord is not appropiate" = correct
-    #return math.sin(x) + x**2 - 2*(math.log(x)) - 5 = 2.495319150388241 = correct
-    #return math.exp(x)*(5 - x) - 5 = 4.96511422842741 = correct
-    return 3*(math.sin(x)) + 9 - x**2 - math.cos(x)
-
-root = Bisection_method(f, 1, 5)
-print("Approximate root:", root)
-
-```
-This code snippet returns: Approximate root: 3.155607581138611
-
-
-here is plotting code:
+Here is my plotting code:
 
 ```python
 
