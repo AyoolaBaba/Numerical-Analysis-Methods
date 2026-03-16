@@ -177,7 +177,7 @@ Output: Approximate root: 3.15557861328125
 
 This version highlights how error bounds can be predicted analytically, which is a key concept in numerical analysis.
 
-### Fixed Point Iteration
+# Fixed Point Iteration
 Fixed point iteration solves equations of the form:
 
 $$x = g(x)$$
@@ -268,7 +268,7 @@ print("Approximate root:", root)
 
 This reflects a common principle in numerical algorithms: **robust stopping criteria** are essential for stability.
 
-### Newton's Method
+# Newton's Method
 
 Newton’s method is significantly faster than bisection or fixed point iteration because it uses derivative information. 
 
@@ -399,7 +399,7 @@ Tracking error provides insight into how quickly the algorithm converges, allowi
 
 ---
 
-## Secant Method
+# Secant Method
 
 The **Secant Method** approximates Newton’s method but avoids the necessity of computing derivatives. Instead, it approximates the derivative using the slope between two previous points.
 
