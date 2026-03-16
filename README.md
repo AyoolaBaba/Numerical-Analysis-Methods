@@ -4,12 +4,12 @@ Independent computational project by **Ayoola Babalola**.
 ## Project Structure
 
 1. [Chapter 1 – The Foundations of Numerical Approximation](chapter1.md)
-2. [Chapter 2 – Error and Stability](chapter2.md)
+2. [Chapter 2 – Error, Convergence, and Stability in Root-Finding Algorithms](chapter2.md)
 3. [Chapter 3 – Numerical Differentiation and Error Propagation](chapter3.md)
 4. [Chapter 4 – TBC](chapter4.md)
-5. [Chapter 5 – TBC Numerical Integration](chapter5.md)
-6. [Chapter 6 – TBC Differential Equations](chapter6.md)
-7. [Chapter 7 – TBC Conclusion](chapter7.md)
+5. [Chapter 5 – TBC ](chapter5.md)
+6. [Chapter 6 – TBC ](chapter6.md)
+7. [Chapter 7 – TBC ](chapter7.md)
 
 
 ## Overview
@@ -42,17 +42,17 @@ code-based experiments.
 
 ## Chapter Overview
 
-### Chapter 1 — Floating-Point Arithmetic and Rounding Error
+### Chapter 1 — The Foundations of Numerical Approximation
 Investigates how real numbers are represented in computers and why rounding
 errors are unavoidable. Includes analytical reasoning and computational
 examples demonstrating error propagation in basic arithmetic.
 
-### Chapter 2 — Error, Conditioning, and Stability
+### Chapter 2 — Error, Convergence, and Stability in Root-Finding Algorithms
 Examines how errors propagate through algorithms, distinguishing between
 well-conditioned and ill-conditioned problems and analysing numerical
 stability in practice.
 
-### Chapter 3 — Function Approximation and Truncation Error
+### Chapter 3 — Numerical Differentiation and Error Propagation
 Explores polynomial and series approximations of functions, highlighting the
 role of truncation error and the trade-off between accuracy and computational
 cost.
