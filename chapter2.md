@@ -30,7 +30,7 @@ It works by repeatedly halving an interval that contains a root.
 The method requires a **sign change condition**:
 
 \[
-f(a)f(b) < 0
+|e_{k+1}| \approx \frac{1}{2} |e_k|
 \]
 
 This guarantees that a root exists in the interval \([a,b]\) by the **Intermediate Value Theorem**.
