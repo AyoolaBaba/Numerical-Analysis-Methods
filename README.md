@@ -9,7 +9,7 @@ Author and code By: **Ayoola Babalola**
 4. [Chapter 4 – TBC](chapter4.md)
 5. [Chapter 5 – TBC Numerical Integration](chapter5.md)
 6. [Chapter 6 – TBC Differential Equations](chapter6.md)
-7. [Chapter 7 – Conclusion](chapter7.md)
+7. [Chapter 7 – TBC Conclusion](chapter7.md)
 
 
 ## Overview
