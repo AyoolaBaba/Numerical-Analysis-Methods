@@ -442,9 +442,14 @@ print("Approximate root:", root)
 
 ```
 
+Output: 
+
 Approximate root: 2.2191071499595116
 
-Secant Method with tracking
+
+## Error Tracking for the Secant Method
+
+Tracking the error across iterations allows us to empirically analyse convergence properties.
 
 ```python
 
@@ -478,7 +483,27 @@ print("Approximate root:", root)
 print("List of errors:", list_errors)
 
 ```
+
 Approximate root: 1.4142135620573204
 List of errors: [0.08088022903976166, 0.014213562373095012, 0.00042058396836819334, 2.1238982250704197e-06, 3.157747396898003e-10]
+
+This rapid reduction in error demonstrates the superlinear convergence of the secant method.
+
+
+## Summary
+
+This chapter demonstrates how different root-finding algorithms behave with respect to error propagation and convergence.
+
+Key observations:
+
+Bisection is slow but extremely stable.
+
+Fixed Point Iteration depends strongly on the choice of iteration function.
+
+Newton’s Method converges rapidly but can be unstable if derivatives are small.
+
+Secant Method provides a good compromise between speed and computational cost.
+
+Understanding these trade-offs is fundamental when choosing numerical algorithms for real-world scientific computing problems.
 
 
