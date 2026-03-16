@@ -1,5 +1,5 @@
-# Numerical Analysis Study
-## Chapter 1: The Foundations of Numerical Approximation
+# Chapter 1
+## The Foundations of Numerical Approximation
 
 ### 1.1 Introduction: Why Numerical Analysis?
 In pure mathematics, we operate in a continuum of real numbers ($\mathbb{R}$). However, digital computers are finite systems that store data in discrete bits. This study explores **Numerical Analysis**—the discipline of performing efficient calculations while managing the inevitable errors that arise from hardware limitations.
