@@ -4,7 +4,7 @@
 A central theme in numerical analysis is understanding **how numerical algorithms behave in the presence of approximation error**.  
 When solving equations numerically we rarely obtain the exact solution. Instead, we generate **iterative approximations** that converge toward the true root.
 
-This chapter investigates several classical **root-finding algorithms**:
+In this chapter, I investigates several classical **root-finding algorithms**:
 
 - Bisection Method
 - Fixed Point Iteration
