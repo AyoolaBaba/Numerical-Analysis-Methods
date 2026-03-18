@@ -11,7 +11,7 @@ In this chapter, I investigate and code several classical **root-finding algorit
 - Newton’s Method
 - Secant Method
 
-For each algorithm, the focus is not only on computing a root, but also on examining:
+The algorithms will compute a root and examine the following:
 
 - **Convergence behaviour**
 - **Propagation of numerical error**
