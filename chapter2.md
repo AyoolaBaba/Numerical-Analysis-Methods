@@ -11,12 +11,7 @@ In this chapter, I investigate and code several classical **root-finding algorit
 - Newton’s Method
 - Secant Method
 
-The algorithms will compute a root and examine the following:
-
-- **Convergence behaviour**
-- **Propagation of numerical error**
-- **Algorithmic stability**
-- **Computational efficiency**
+The algorithms will compute a root and examine **Convergence behaviour**, **Propagation of numerical error**, **Algorithmic stability** and **Computational efficiency.**
 
 Understanding these aspects helps distinguish **well-conditioned numerical problems from unstable or poorly behaved ones**.
 
