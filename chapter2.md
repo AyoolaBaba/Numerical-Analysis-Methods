@@ -61,6 +61,8 @@ def Bisection_method(f , a , b , tol=1e-7):
   return c
 
 ```
+Outpyut:
+
 Approximate root: 3.155607581138611
 
 Because the interval is halved at each step, the error satisfies:
